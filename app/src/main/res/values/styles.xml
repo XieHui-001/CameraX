@@ -1,0 +1,27 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="XXFileAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@drawable/shape_splash</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+    </style>
+
+    <declare-styleable name="LottieTabView">
+        <attr name="text_selected_color" format="color" />
+        <attr name="text_normal_color" format="color" />
+        <attr name="text_size" format="dimension" />
+        <attr name="lottie_path" format="string" />
+        <attr name="icon_normal" format="reference" />
+        <attr name="icon_selected" format="reference" />
+        <attr name="tab_selected" format="boolean" />
+        <attr name="tab_name" format="string" />
+    </declare-styleable>
+</resources>

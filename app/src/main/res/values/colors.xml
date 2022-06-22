@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#3F87E6</color>
+    <color name="primary">#FFFFFF</color>
+
+    <color name="gray_1">#111111</color>
+    <color name="gray_2">#222222</color>
+    <color name="gray_3">#333333</color>
+    <color name="gray_4">#444444</color>
+    <color name="gray_5">#555555</color>
+    <color name="gray_6">#666666</color>
+    <color name="gray_7">#777777</color>
+    <color name="gray_8">#888888</color>
+    <color name="gray_9">#999999</color>
+    <color name="gray_10">#859096</color>
+    <color name="gray_a">#AAAAAA</color>
+    <color name="gray_b">#BBBBBB</color>
+    <color name="gray_c">#CCCCCC</color>
+    <color name="gray_d">#DDDDDD</color>
+    <color name="gray_e">#EEEEEE</color>
+    <color name="gray_f">#CCCCFF</color>
+    <color name="gray_g">#fafaf9</color>
+
+    <color name="f1">#F1F1F1</color>
+    <color name="f2">#F2F2F2</color>
+    <color name="f3">#F3F3F3</color>
+    <color name="f4">#F4F4F4</color>
+    <color name="f5">#F5F5F5</color>
+    <color name="f6">#F6F6F6</color>
+    <color name="f7">#F7F7F7</color>
+    <color name="f8">#F8F8F8</color>
+    <color name="f9">#F9F9F9</color>
+
+    <color name="color66">#666666</color>
+    <color name="colorMain">#E62E2E</color>
+
+    <color name="colorActiveRed">#FF4E00</color>  <!--激活状态颜色-->
+    <color name="colorResult">#7D808E</color>
+
+    <color name="colorSearchBg">#EFEFF1</color>
+    <color name="colorContent">#222222</color>
+    <color name="colorInactive">#DCDCDC</color>
+    <color name="colorMaskBlue">#A6495688</color> <!--半透明蒙层 65%-->
+    <color name="colorMaskBlack">#A6000000</color> <!--半透明蒙层 65%-->
+    <color name="colorBlack35P">#59000000</color> <!--半透明蒙层 35%-->
+
+    <color name="colorTabTextNormal">#8E9CA5</color>
+    <color name="colorTabTextSelected">#3E86E5</color>
+
+    <color name="colorTextAction">#444954</color>
+
+    <color name="colorLohasActionBg">#F1F5FA</color>
+
+    <color name="colorTabBgOther">#CAE4F5</color>
+    <color name="colorTabBgFirst">#38FFFFFF</color>
+
+    <color name="colorBgComment">#F9FAF9</color>
+    <color name="colorLoadingText">#FAE1B5</color>
+
+    <color name="colorActiveBlue">#3F87E6</color>
+    <color name="colorLight">#859096</color>
+    <color name="bankcardList">#9DBCDB</color>
+    <color name="colorDark">#454952</color>
+    <color name="colorDarkAA">#AA454952</color>
+    <color name="colorLongString">#D0DDEE</color>
+
+    <color name="colorSearchLabel">#323332</color>
+
+    <color name="colorMedalDivider">#D4D7D9</color>
+    <color name="colorMedalText">#454952</color>
+    <color name="colorActionInactive">#EAEDEE</color>
+
+    <color name="black22P">#38000000</color>
+    <color name="blackAA">#AA000000</color>
+    <color name="whiteAA">#AAFFFFFF</color>
+    <color name="grayEE">#E1E9F0</color>
+
+    <color name="colorHighlightGray">#FAFAFA</color>
+    //通用灰色背景突出显示
+
+    <color name="colorLevelYellow">#FF9100</color>
+    <color name="colorLevelYellowBg">#FFFCEC</color>
+    <color name="colorLevelBlue">#528CE2</color>
+    <color name="colorLevelBlueBg">#DBF0FF</color>
+    <color name="colorLevelGreen">#32B28D</color>
+    <color name="colorLevelGreenBg">#DCF3E5</color>
+
+    <color name="colorLevelGold">#FFBA17</color>
+    <color name="colorLevelSilver">#9AACBC</color>
+    <color name="colorLevelCopper">#E29982</color>
+
+    <color name="colorVehicleLicenseBg">#EEF5FC</color>
+    <color name="colorVehicleLicenseStart">#6AAEED</color>
+    <color name="colorVehicleLicenseEnd">#3D86E5</color>
+    <color name="colorEditTextLine">#859096</color>
+
+    <color name="colorBgContact">#F76D3F</color>
+    <color name="colorMediaTitle">#454952</color>
+    <color name="colorFollow">#3EA8E6</color>
+    <color name="colorFollowBg">#DFF6FE</color>
+
+    <color name="colorBgLohasType">#DFFFEA</color>
+
+    <color name="colorTextTopicStatusNotStarted">#41C2D5</color>
+    <color name="colorTextTopicStatusGoing">#4DC06A</color>
+    <color name="colorTextTopicStatusEnd">#929DA1</color>
+    <color name="colorBgTopicStatusNotStarted">#E0F9FD</color>
+    <color name="colorBgTopicStatusGoing">#DFFFEA</color>
+    <color name="colorBgTopicStatusEnd">#FAFAFA</color>
+
+    <color name="colorSignDayLink">#F1F2F2</color>
+
+    <color name="colorEditTextBg">#F8F8F8</color>
+    <color name="colorBorder">#FAFAFA</color>
+
+    <color name="colorWorkTimeDivider">#E5EAEE</color>
+    <color name="colorFansFollowDivider">#D2DAE0</color>
+    <color name="colorFansFollowCount">#454952</color>
+
+    <color name="colorBgRanking1">#FFFAE5</color>
+    <color name="colorBgRanking2">#F6F6F6</color>
+    <color name="colorBgRanking3">#FDF9F8</color>
+
+    <color name="colorC8CFD7">#C8CFD7</color>
+    <color name="colorDFF6FE">#DFF6FE</color>
+    <color name="color3AA9E8">#3AA9E8</color>
+    <color name="colorFAFAFA">#FAFAFA</color>
+    <color name="colorC6D0D9">#C6D0D9</color>
+
+    <color name="colorDFFFEA">#DFFFEA</color>
+    <color name="color4DC06A">#4DC06A</color>
+    <color name="colorF76D3F">#F76D3F</color>
+    <color name="color6F7B88">#6F7B88</color>
+
+    <color name="colorE7F0F9">#E7F0F9</color>
+
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">XXFile</string>
+    <string name="text_angle_0">默认角度</string>
+    <string name="text_angle_90">旋转90°</string>
+    <string name="text_angle_180">旋转180°</string>
+    <string name="text_angle_270">旋转270°</string>
+    <string name="text_carme_back">切换前置</string>
+    <string name="text_carme_font">切换后置</string>
+</resources>
