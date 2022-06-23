@@ -13,8 +13,12 @@ import android.view.View
 import android.widget.SeekBar
 import androidx.annotation.RequiresApi
 import androidx.camera.core.*
+import androidx.camera.core.CameraSelector.DEFAULT_BACK_CAMERA
 import androidx.camera.core.FocusMeteringAction.*
+import androidx.camera.extensions.ExtensionMode
+import androidx.camera.extensions.ExtensionsManager
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.concurrent.futures.await
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import com.blankj.utilcode.util.ActivityUtils
@@ -29,6 +33,9 @@ import java.io.File
 import java.util.*
 import com.example.xxfile.ui.base.BaseFragment
 import com.example.xxfile.utils.hasPermission
+import java.util.Currency.getInstance
+import java.util.concurrent.ExecutionException
+import java.util.concurrent.TimeUnit
 
 
 class PicFragment : BaseFragment<ActivityPicBinding>() {
@@ -99,7 +106,7 @@ class PicFragment : BaseFragment<ActivityPicBinding>() {
         vb.btnPreview.onExecClick {
             showPreview()
         }
-        vb.btnStart.onExecClick {
+        vb.btnPhoto.onExecClick {
             if (imageCapture != null && outPutFile != null) {
                 imageCapture!!.takePicture(outPutFile!!,
                     ContextCompat.getMainExecutor(ActivityUtils.getTopActivity()),
@@ -134,14 +141,14 @@ class PicFragment : BaseFragment<ActivityPicBinding>() {
 
     private fun hidePreview(){
         vb.btnPreview.visibility = View.VISIBLE
-        vb.btnStart.visibility = View.GONE
+        vb.btnPhoto.visibility = View.GONE
         vb.previewView.visibility = View.GONE
     }
 
     @RequiresApi(Build.VERSION_CODES.P)
     private fun showPreview(){
         vb.btnPreview.visibility = View.GONE
-        vb.btnStart.visibility = View.VISIBLE
+        vb.btnPhoto.visibility = View.VISIBLE
         vb.previewView.visibility = View.VISIBLE
         initPreview()
     }
@@ -194,7 +201,9 @@ class PicFragment : BaseFragment<ActivityPicBinding>() {
             .setTargetRotation(cameraAngleValue)
             .build()
 
-        cameraInfo =  cameraProvider.bindToLifecycle(this as LifecycleOwner, cameraSelector!!, imageCapture, imageAnalysis, preview)
+        if (!exTensionApi(cameraProvider)){
+            cameraInfo =  cameraProvider.bindToLifecycle(this as LifecycleOwner, cameraSelector!!, imageCapture, imageAnalysis, preview)
+        }
 
         outPutFile = ImageCapture.OutputFileOptions.Builder(File("$savePath${Date().time}_Test.jpg")).build()
         initRatioAndExposure()
@@ -277,6 +286,7 @@ class PicFragment : BaseFragment<ActivityPicBinding>() {
     private fun automaticFocus(data : MeteringPoint){
         val action : FocusMeteringAction = FocusMeteringAction.Builder(data,FLAG_AF)
             .addPoint(data, FLAG_AF or FLAG_AE or FLAG_AWB)
+            .setAutoCancelDuration(5,TimeUnit.SECONDS)
             .build()
         val cameraControl = cameraInfo!!.cameraControl
         val future = cameraControl.startFocusAndMetering(action)
@@ -293,18 +303,51 @@ class PicFragment : BaseFragment<ActivityPicBinding>() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initRatioAndExposure(){
-        vb.tvRatioValue.visibility = View.VISIBLE
-        vb.tvExposureValue.visibility = View.VISIBLE
         val exposureState = cameraInfo?.cameraInfo!!.exposureState
 
+        vb.tvRatioValue.apply {
+            visibility = View.VISIBLE
+            max = cameraInfo?.cameraInfo!!.zoomState.value!!.maxZoomRatio.toInt()
+            min = cameraInfo?.cameraInfo!!.zoomState.value!!.minZoomRatio.toInt()
+        }
+
         vb.tvExposureValue.apply {
+            visibility = View.VISIBLE
             isEnabled = exposureState.isExposureCompensationSupported
             max = exposureState.exposureCompensationRange.upper
             min = exposureState.exposureCompensationRange.lower
             progress = exposureState.exposureCompensationIndex
         }
-        vb.tvRatioValue.max = cameraInfo?.cameraInfo!!.zoomState.value!!.maxZoomRatio.toInt()
-        vb.tvRatioValue.min = cameraInfo?.cameraInfo!!.zoomState.value!!.minZoomRatio.toInt()
     }
+
+    // 查看是否存在可用扩展接口
+    private fun exTensionApi(cameraProvider: ProcessCameraProvider) : Boolean{
+        var isExtension = false
+        // 创建扩展管理器（使用 Jetpack Concurrent 库）
+        val future =  ExtensionsManager.getInstanceAsync(mContext,cameraProvider)
+        // Obtain the ExtensionsManager instance from the returned ListenableFuture object
+        future.addListener(Runnable() {
+                try {
+                    val extensionsManager = future.get()
+                    // Query if extension is available.
+                    if (extensionsManager.isExtensionAvailable(DEFAULT_BACK_CAMERA, ExtensionMode.FACE_RETOUCH)) {
+                        // Needs to unbind all use cases before enabling different extension mode.
+                        // Retrieve extension enabled camera selector
+                        val extensionCameraSelector: CameraSelector = extensionsManager.getExtensionEnabledCameraSelector(DEFAULT_BACK_CAMERA, ExtensionMode.FACE_RETOUCH)
+                        // Bind image capture and preview use cases with the extension enabled camera
+                        // selector.
+                        cameraInfo = cameraProvider.bindToLifecycle(this as LifecycleOwner, extensionCameraSelector, imageCapture, preview)
+                        isExtension = true
+                    }
+                } catch (e: ExecutionException) {
+                    LogUtils.e("检查是否存在扩展时发生错误:${e}")
+                } catch (e: InterruptedException) {
+                    LogUtils.e("检查是否存在扩展时发生错误:${e}")
+                }
+            }, ContextCompat.getMainExecutor(mContext))
+        LogUtils.e(if (isExtension){"存在可用拓展"}else{"不存在可用拓展"})
+        return  isExtension
+    }
+
     override fun getViewBinding() = ActivityPicBinding.inflate(layoutInflater)
 }

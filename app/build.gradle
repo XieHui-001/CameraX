@@ -16,6 +16,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file("xxfile.jks") //XXXX.keystore是要打包的Key（注意：要把key放到项目根目录下）
+            storePassword "123456" //密钥库的密码
+            keyAlias "xxfile" //key的别名
+            keyPassword "123456" //XXXX.keystore的密码（为方便记忆，可以和storePassword一样）
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -74,6 +83,7 @@ dependencies {
     implementation "androidx.camera:camera-mlkit-vision:${camerax_version}"
     // If you want to additionally use the CameraX Extensions library
     implementation "androidx.camera:camera-extensions:${camerax_version}"
+    implementation('androidx.concurrent:concurrent-futures-ktx:1.1.0')
 
     implementation 'com.github.getActivity:XXPermissions:13.6'
     implementation 'com.github.hackware1993:MagicIndicator:1.7.0'
