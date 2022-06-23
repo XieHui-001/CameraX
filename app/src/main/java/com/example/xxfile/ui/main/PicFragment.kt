@@ -18,11 +18,11 @@ import androidx.camera.core.FocusMeteringAction.*
 import androidx.camera.extensions.ExtensionMode
 import androidx.camera.extensions.ExtensionsManager
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.concurrent.futures.await
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.LogUtils
+import com.blankj.utilcode.util.ReflectUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.example.xxfile.databinding.ActivityPicBinding
 import com.example.xxfile.ui.etx.onExecClick
@@ -32,8 +32,9 @@ import com.gyf.immersionbar.ImmersionBar
 import java.io.File
 import java.util.*
 import com.example.xxfile.ui.base.BaseFragment
+import com.example.xxfile.ui.test
+import com.example.xxfile.utils.ActionView
 import com.example.xxfile.utils.hasPermission
-import java.util.Currency.getInstance
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.TimeUnit
 
@@ -350,4 +351,9 @@ class PicFragment : BaseFragment<ActivityPicBinding>() {
     }
 
     override fun getViewBinding() = ActivityPicBinding.inflate(layoutInflater)
+
+    private fun testMethod(){
+       val testClassInstance =  ReflectUtils.reflect(test::class.java).newInstance()
+       LogUtils.e("${testClassInstance.method("invokeStr")}")
+    }
 }
