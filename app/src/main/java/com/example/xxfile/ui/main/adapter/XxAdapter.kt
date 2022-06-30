@@ -4,9 +4,9 @@ import android.util.SparseArray
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.xxfile.ui.main.GlFragment
-import com.example.xxfile.ui.main.PicFragment
-import com.example.xxfile.ui.main.VideoFragment
+import com.example.xxfile.ui.main.fragment.GlFragment
+import com.example.xxfile.ui.main.fragment.PicFragment
+import com.example.xxfile.ui.main.fragment.VideoFragment
 
 class XxAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
 

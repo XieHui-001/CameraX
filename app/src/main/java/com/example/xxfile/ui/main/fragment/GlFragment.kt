@@ -1,4 +1,4 @@
-package com.example.xxfile.ui.main
+package com.example.xxfile.ui.main.fragment
 
 import android.hardware.camera2.CameraMetadata
 import android.os.Build
@@ -101,7 +101,7 @@ class GlFragment : BaseFragment<FragmentGlViewBinding>() {
             .build()
 
         cameraInfo =  cameraProvider.bindToLifecycle(this as LifecycleOwner, cameraSelector!!, imageCapture, imageAnalysis, preview)
-        outPutFile = ImageCapture.OutputFileOptions.Builder(File("${savePath}${Date().time}_Test.jpg")).build()
+        outPutFile = ImageCapture.OutputFileOptions.Builder(File("$savePath${Date().time}_Test.jpg")).build()
     }
 
 

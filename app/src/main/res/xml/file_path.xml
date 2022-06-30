@@ -1,0 +1,8 @@
+<paths>
+    <external-path
+        name="path1"
+        path="XXFile" />
+    <root-path
+        name="camera_photos"
+        path="" />
+</paths>

@@ -1,4 +1,4 @@
-package com.example.xxfile.ui.main
+package com.example.xxfile.ui.main.fragment
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -195,7 +195,11 @@ class PicFragment : BaseFragment<ActivityPicBinding>() {
             .build()
 
             cameraSelector = CameraSelector.Builder()
-            .requireLensFacing(if (cameraViewIsFont){CAMERA_FACING_Font}else{CAMERA_FACING_BACK})
+            .requireLensFacing(if (cameraViewIsFont){
+                CAMERA_FACING_Font
+            }else{
+                CAMERA_FACING_BACK
+            })
             .build()
 
         preview.setSurfaceProvider(vb.previewView.surfaceProvider)

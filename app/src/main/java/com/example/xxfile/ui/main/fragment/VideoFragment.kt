@@ -1,4 +1,4 @@
-package com.example.xxfile.ui.main
+package com.example.xxfile.ui.main.fragment
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -6,18 +6,14 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Size
-import android.view.LayoutInflater
 import android.view.Surface.ROTATION_0
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.camera.core.*
 import androidx.camera.core.impl.utils.executor.CameraXExecutors
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
-import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.example.xxfile.databinding.ActivityVideoBinding
 import com.example.xxfile.ui.base.BaseFragment
