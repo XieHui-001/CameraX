@@ -22,7 +22,6 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.LogUtils
-import com.blankj.utilcode.util.ReflectUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.example.xxfile.databinding.ActivityPicBinding
 import com.example.xxfile.ui.etx.onExecClick
@@ -32,8 +31,6 @@ import com.gyf.immersionbar.ImmersionBar
 import java.io.File
 import java.util.*
 import com.example.xxfile.ui.base.BaseFragment
-import com.example.xxfile.ui.test
-import com.example.xxfile.utils.ActionView
 import com.example.xxfile.utils.hasPermission
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.TimeUnit
@@ -66,7 +63,13 @@ class PicFragment : BaseFragment<ActivityPicBinding>() {
     private var cameraInfo : Camera? = null
     private var cameraSelector: CameraSelector? = null
     @RequiresApi(Build.VERSION_CODES.P)
-    override fun initData() {}
+    override fun initData() {
+//        vb.tvActionView.createActionView("test", arrayListOf("测试","测试","测试","测试","测试","测试"),object : ActionView.actionViewBackData{
+//            override fun backData(data: String) {
+//               ToastUtils.showShort(data)
+//            }
+//        })
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     @RequiresApi(Build.VERSION_CODES.P)
@@ -231,6 +234,7 @@ class PicFragment : BaseFragment<ActivityPicBinding>() {
         super.onPause()
         imageCapture = null
         outPutFile = null
+        processCameraProvider?.unbindAll()
         hidePreview()
     }
 
@@ -351,9 +355,4 @@ class PicFragment : BaseFragment<ActivityPicBinding>() {
     }
 
     override fun getViewBinding() = ActivityPicBinding.inflate(layoutInflater)
-
-    private fun testMethod(){
-       val testClassInstance =  ReflectUtils.reflect(test::class.java).newInstance()
-       LogUtils.e("${testClassInstance.method("invokeStr")}")
-    }
 }

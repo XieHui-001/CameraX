@@ -13,7 +13,7 @@
         android:id="@+id/previewView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@+id/include_nav_bar" />
 
     <RadioGroup
@@ -137,10 +137,10 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_ratio_value" />
 
     <com.example.xxfile.utils.ActionView
-        android:visibility="gone"
         android:id="@+id/tv_action_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_exposure_value" />

@@ -71,4 +71,8 @@ class ActionView: LinearLayout {
     interface actionViewBackData{
         fun backData(data : String)
     }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+    }
 }

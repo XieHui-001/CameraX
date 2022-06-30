@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val tabArray by lazy {
-       arrayListOf("拍照","录制")
+       arrayListOf("拍照","录制","OpenGL预览")
     }
 
     @RequiresApi(Build.VERSION_CODES.P)
